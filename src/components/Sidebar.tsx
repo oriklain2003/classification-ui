@@ -79,22 +79,6 @@ const Sidebar: React.FC<SidebarProps> = ({
     setIsResizing(true);
   };
 
-  const handleExportJSON = () => {
-    const jsonData = onExportJSON();
-    // Copy to clipboard
-    navigator.clipboard.writeText(jsonData).then(() => {
-      alert('JSON data copied to clipboard!');
-    }).catch(() => {
-      // Fallback: show in a modal/alert
-      const textarea = document.createElement('textarea');
-      textarea.value = jsonData;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      alert('JSON data copied to clipboard!');
-    });
-  };
 
   return (
     <div ref={sidebarRef} className={`sidebar ${isResizing ? 'resizing' : ''}`}>

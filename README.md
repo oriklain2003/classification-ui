@@ -1,6 +1,30 @@
-# Getting Started with Create React App
+# Flight Path Classifier UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React-based user interface for the Flight Path Classifier system, built with [Create React App](https://github.com/facebook/create-react-app).
+
+## Environment Configuration
+
+Before running the application, you need to configure the API endpoint:
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Update the API base URL in `.env`:
+   ```
+   REACT_APP_API_BASE_URL=http://localhost:8000
+   ```
+
+   Replace `http://localhost:8000` with your actual API server URL.
+
+## Features
+
+- Interactive flight path creation and editing
+- Real-time classification of flight paths (Birds, Aircraft, UAV, Missile)
+- Probability visualization with detailed analysis
+- Flight path visualization on interactive maps
+- Export/import functionality for flight data
 
 ## Available Scripts
 
