@@ -190,7 +190,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                     </span>
                   </div>
                   <p style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px', margin: '4px 0 0 0' }}>
-                    Alt: {point.alt}m | Speed: {point.speed}km/h | Heading: {point.heading}°
+                    Alt: {point.alt}ft | Speed: {point.speed}kts | Heading: {point.heading}°
                   </p>
                 </div>
               ))}

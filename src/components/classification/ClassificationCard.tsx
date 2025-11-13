@@ -34,10 +34,10 @@ const ClassificationCard: React.FC<ClassificationCardProps> = ({
 
   const getClassificationIcon = () => {
     const topClass = getTopClassification();
-    if (topClass === 'Unmanned Aerial Vehicle') return '🚁';
-    if (topClass === 'Aircraft') return '✈️';
-    if (topClass === 'Missile') return '🚀';
-    return '🐦';
+    if (topClass === 'Unmanned Aerial Vehicle') return '';
+    if (topClass === 'Aircraft') return '';
+    if (topClass === 'Missile') return '';
+    return '';
   };
 
   return (
