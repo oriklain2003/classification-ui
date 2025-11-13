@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { FlightPoint } from '../../types';
-import HebrewCountryLabels from './HebrewCountryLabels';
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -18,7 +17,6 @@ interface MapComponentProps {
   onPointDrag: (pointId: string, lat: number, lng: number) => void;
   selectedPointId: string | null;
   onPointSelect: (pointId: string) => void;
-  showHebrewLabels?: boolean;
 }
 
 // Custom marker icons
@@ -133,7 +131,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
   onPointDrag,
   selectedPointId,
   onPointSelect,
-  showHebrewLabels = true,
 }) => {
   const mapCenter: [number, number] = [32.0853, 34.7818]; // Default center (Israel)
   const mapZoom = 10;
@@ -152,9 +149,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
-        {/* Hebrew country labels overlay */}
-        <HebrewCountryLabels enabled={showHebrewLabels} />
         
         <MapClickHandler onAddPoint={onAddPoint} />
 

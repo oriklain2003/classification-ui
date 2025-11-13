@@ -20,7 +20,7 @@ export interface PredictionResponse {
 }
 
 export class PredictionService {
-  private static readonly BASE_URL = 'http://localhost:8000';
+  private static readonly BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
 
   static async predict(data: PredictionRequest): Promise<PredictionResponse> {
     try {

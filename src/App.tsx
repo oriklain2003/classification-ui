@@ -102,7 +102,6 @@ function App() {
           onPointDrag={flightPathManager.handlePointDrag}
           selectedPointId={selectedPointId}
           onPointSelect={setSelectedPointId}
-          showHebrewLabels={true}
         />
       </div>
       

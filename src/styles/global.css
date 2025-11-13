@@ -221,25 +221,3 @@ body {
 .sidebar-header .button:last-child {
   margin-bottom: 0;
 }
-
-/* Hebrew country labels styling */
-.hebrew-country-label {
-  pointer-events: none !important;
-  user-select: none !important;
-  z-index: 400 !important;
-}
-
-/* Hebrew text support */
-.hebrew-text {
-  direction: rtl;
-  unicode-bidi: bidi-override;
-  font-family: 'Segoe UI', 'Arial Hebrew', 'Noto Sans Hebrew', 'David', 'Times New Roman', sans-serif;
-  text-align: center;
-}
-
-/* Ensure Hebrew text renders properly in all browsers */
-@supports (font-feature-settings: "kern") {
-  .hebrew-text {
-    font-feature-settings: "kern" 1, "liga" 1;
-  }
-}
