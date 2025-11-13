@@ -1,3 +1,5 @@
+import { config } from '../config/environment';
+
 export interface PredictionRequest {
   data: Array<{
     lat: number;
@@ -20,7 +22,7 @@ export interface PredictionResponse {
 }
 
 export class PredictionService {
-  private static readonly BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
+  private static readonly BASE_URL = config.apiBaseUrl;
 
   static async predict(data: PredictionRequest): Promise<PredictionResponse> {
     try {
