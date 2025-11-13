@@ -44,18 +44,18 @@ const PointDetails: React.FC<PointDetailsProps> = ({ point, onUpdate, onDelete }
         </div>
         
         <div className="point-detail">
-          <label>Altitude (m)</label>
+          <label>Altitude (ft)</label>
           <input
             type="number"
             step="1"
             value={point.alt}
             onChange={(e) => handleInputChange('alt', e.target.value)}
-            placeholder="100"
+            placeholder="1000"
           />
         </div>
         
         <div className="point-detail">
-          <label>Speed (km/h)</label>
+          <label>Speed (kts)</label>
           <input
             type="number"
             step="1"
