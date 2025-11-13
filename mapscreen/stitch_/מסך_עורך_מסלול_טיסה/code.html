@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="dark" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>מתכנן נתיבי טיסה</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#007AFF", // System Blue
+                            hover: "#0071e6",
+                        },
+                        "background-light": "#f5f5f7",
+                        "background-dark": "#1d1d1f",
+                        "card": {
+                            light: "#ffffff",
+                            dark: "#333336"
+                        },
+                        "border-light": "#d2d2d7",
+                        "border-dark": "#424245"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'controls': '0 4px 12px rgba(0,0,0,0.15)',
+                        'subtle-dark': '0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 20
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+        .points-list > div {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100" dir="ltr">
+<div class="relative flex min-h-screen w-full flex-col dark group/design-root overflow-hidden">
+<div class="flex h-screen w-full flex-row">
+<aside class="flex w-full max-w-sm flex-col border-r border-border-dark bg-[#28282B] text-white">
+<div class="flex h-full flex-col space-y-4">
+<div class="border-b border-border-dark p-4 space-y-4">
+<div class="flex-shrink-0 flex items-center space-x-2">
+<span class="material-symbols-outlined text-gray-300 text-2xl">route</span>
+<div>
+<h1 class="text-xl font-semibold text-gray-50">Flight Path</h1>
+<p class="text-sm text-gray-400">3 points</p>
+</div>
+</div>
+<div class="flex-shrink-0 space-y-2">
+<button class="w-full flex items-center justify-center space-x-2 text-center py-2 text-sm font-medium bg-[#3A3A3C] hover:bg-[#48484A] text-gray-50 rounded-md transition-colors"><span class="material-symbols-outlined text-base">upload_file</span><span>Load Track Data</span></button>
+<button class="w-full flex items-center justify-center space-x-2 text-center py-2 text-sm font-medium bg-primary hover:bg-primary-hover text-white rounded-md transition-colors"><span class="material-symbols-outlined text-base">auto_awesome</span><span>Predict Object Type</span></button>
+<button class="w-full flex items-center justify-center space-x-2 text-center py-2 text-sm font-medium bg-[#3A3A3C] hover:bg-[#48484A] text-red-400 rounded-md transition-colors"><span class="material-symbols-outlined text-base">delete_sweep</span><span>Clear All</span></button>
+</div>
+</div>
+<div class="flex-grow overflow-y-auto space-y-3 px-4">
+<h2 class="text-lg font-semibold text-gray-50 pt-2 flex items-center space-x-2"><span class="material-symbols-outlined text-gray-300">pin_drop</span><span>Points</span></h2>
+<div class="space-y-3 points-list">
+<div class="border border-border-dark bg-[#3A3A3C] p-3 rounded-lg cursor-pointer hover:bg-[#48484A] transition-all shadow-subtle-dark hover:shadow-lg hover:scale-[1.02]">
+<div class="flex justify-between items-center">
+<span class="font-medium text-gray-50">Start</span>
+<span class="text-sm text-gray-400">32.1837, 34.5008</span>
+</div>
+<p class="text-xs text-gray-400 mt-1">Alt: 100m | Speed: 50km/h | Heading: 115°</p>
+</div>
+<div class="border border-primary bg-[#3A3A3C] p-3 rounded-lg cursor-pointer ring-2 ring-primary scale-[1.03] shadow-lg shadow-primary/20 transition-all">
+<div class="flex justify-between items-center">
+<span class="font-medium text-gray-50">Point 2</span>
+<span class="text-sm text-gray-400">32.0826, 34.6335</span>
+</div>
+<p class="text-xs text-gray-400 mt-1">Alt: 100m | Speed: 50km/h | Heading: 115°</p>
+</div>
+<div class="border border-border-dark bg-[#3A3A3C] p-3 rounded-lg cursor-pointer hover:bg-[#48484A] transition-all shadow-subtle-dark hover:shadow-lg hover:scale-[1.02]">
+<div class="flex justify-between items-center">
+<span class="font-medium text-gray-50">End</span>
+<span class="text-sm text-gray-400">31.8729, 34.7099</span>
+</div>
+<p class="text-xs text-gray-400 mt-1">Alt: 100m | Speed: 50km/h | Heading: 207°</p>
+</div>
+</div>
+</div>
+<div class="border-t border-border-dark p-4 space-y-4">
+<div class="flex-shrink-0 space-y-3">
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-semibold text-gray-50 flex items-center space-x-2"><span class="material-symbols-outlined text-gray-300">edit_location_alt</span><span>Point Details</span></h2>
+<button class="px-3 py-1.5 text-sm font-medium bg-[#3A3A3C] hover:bg-[#48484A] text-red-400 rounded-md transition-colors flex items-center space-x-1.5"><span class="material-symbols-outlined text-base">delete</span><span>Delete</span></button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="text-xs text-gray-400 block mb-1">Latitude</label>
+<input class="w-full bg-[#3A3A3C] border border-border-dark text-gray-50 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition shadow-subtle-dark" type="text" value="31.872893"/>
+</div>
+<div>
+<label class="text-xs text-gray-400 block mb-1">Longitude</label>
+<input class="w-full bg-[#3A3A3C] border border-border-dark text-gray-50 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition shadow-subtle-dark" type="text" value="34.709930"/>
+</div>
+<div>
+<label class="text-xs text-gray-400 block mb-1">Altitude (m)</label>
+<input class="w-full bg-[#3A3A3C] border border-border-dark text-gray-50 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition shadow-subtle-dark" type="text" value="100"/>
+</div>
+<div>
+<label class="text-xs text-gray-400 block mb-1">Speed (km/h)</label>
+<input class="w-full bg-[#3A3A3C] border border-border-dark text-gray-50 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition shadow-subtle-dark" type="text" value="50"/>
+</div>
+<div class="col-span-2">
+<label class="text-xs text-gray-400 block mb-1">Heading (°)</label>
+<input class="w-full bg-[#2c2c2e] border border-border-dark text-gray-400 p-2 rounded-lg text-sm focus:outline-none cursor-not-allowed shadow-inner" readonly="" type="text" value="207"/>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<details class="group">
+<summary class="flex items-center justify-between cursor-pointer list-none bg-[#3A3A3C] p-2 rounded-lg border border-border-dark hover:bg-[#48484A] transition-colors shadow-subtle-dark">
+<span class="font-medium text-gray-50 flex items-center space-x-2"><span class="material-symbols-outlined text-gray-300">data_object</span><span>JSON Output</span></span>
+<div class="flex items-center space-x-2">
+<span class="text-gray-400 text-sm">3 points</span>
+<span class="material-symbols-outlined text-gray-400 text-xl transition-transform group-open:rotate-90">chevron_right</span>
+</div>
+</summary>
+<div class="mt-2 bg-[#2c2c2e] p-3 rounded-lg border border-border-dark relative">
+<button class="absolute top-2 right-2 bg-[#3A3A3C] hover:bg-[#48484A] text-gray-300 hover:text-white px-2 py-1 rounded-md text-xs font-medium transition-colors flex items-center space-x-1.5"><span class="material-symbols-outlined text-sm">content_copy</span><span>Copy</span></button>
+<pre class="text-xs text-gray-300 overflow-auto pt-8"><code>...</code></pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1">
+<div class="relative h-full w-full bg-cover bg-center" data-alt="Aerial view of a coastal city with a complex road network, representing a map interface." data-location="Coastal City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXiQJHRQhwzWH_-yZK-gw6GepO6lwxNJjvcfgkQkh-T0R6r-J1roRRKyhNNUhXK_tld2ZEp4oy-CUu99oFPqa2FStVGEO4t08iAEI-aXsAtbO9QBd3LeDQ6_uWZq-U_D3hW9b6Lvidxtel60A1bbRVMUapHtCtjH345IARV3DZMzsS9arGViXJIgKpTh0q0eSwdZ8KD67zkJkpHL__zbpxAqpLCsTRBeBIde5ZEbq-a_x0u_JXmhvINsHVycJU74jtypFrWen7rIkf');">
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="relative flex h-full flex-col justify-between p-4">
+<div class="flex justify-end">
+<label class="flex max-w-md">
+<div class="flex w-full items-stretch rounded-lg bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-lg shadow-controls">
+<div class="flex items-center justify-center pl-3.5 pr-2 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex h-11 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border-none bg-transparent px-2 text-base font-normal text-gray-900 placeholder:text-gray-500 dark:text-gray-100 dark:placeholder:text-gray-400 focus:outline-0 focus:ring-0" placeholder="חיפוש מיקום" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-col items-end gap-3">
+<div class="flex flex-col overflow-hidden rounded-lg bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-lg shadow-controls">
+<button class="flex size-11 items-center justify-center text-gray-700 dark:text-gray-200 transition-colors hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<div class="h-px w-full bg-border-light dark:bg-border-dark"></div>
+<button class="flex size-11 items-center justify-center text-gray-700 dark:text-gray-200 transition-colors hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">remove</span>
+</button>
+</div>
+<button class="flex size-11 items-center justify-center rounded-lg bg-card-light/80 dark:bg-card-dark/80 text-gray-700 dark:text-gray-200 backdrop-blur-lg shadow-controls transition-colors hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">my_location</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
