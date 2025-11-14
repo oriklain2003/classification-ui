@@ -27,3 +27,4 @@ export const getEnvironmentConfig = (): EnvironmentConfig => {
 
 // Export the config as a singleton
 export const config = getEnvironmentConfig();
+
